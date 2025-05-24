@@ -23,6 +23,7 @@ Supermemory now has 20k+ users and it runs on $5/month. safe to say, it's _very_
 1. Make sure that you have [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#installupdate-wrangler) installed. And also that you have logged in with `wrangler login` (You'll need a Cloudflare account)
 
 2. Clone the repository and install dependencies:
+
    ```bash
    git clone https://github.com/Dhravya/cloudflare-saas-stack
    cd cloudflare-saas-stack
@@ -41,12 +42,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Cloudflare Integration
 
 Besides the `dev` script, `c3` has added extra scripts for Cloudflare Pages integration:
+
 - `pages:build`: Build the application for Pages using [`@cloudflare/next-on-pages`](https://github.com/cloudflare/next-on-pages) CLI
 - `preview`: Locally preview your Pages application using [Wrangler](https://developers.cloudflare.com/workers/wrangler/) CLI
 - `deploy`: Deploy your Pages application using Wrangler CLI
 - `cf-typegen`: Generate typescript types for Cloudflare env.
 
-> __Note:__ While the `dev` script is optimal for local development, you should preview your Pages application periodically to ensure it works properly in the Pages environment.
+> **Note:** While the `dev` script is optimal for local development, you should preview your Pages application periodically to ensure it works properly in the Pages environment.
 
 ## Bindings
 
@@ -55,7 +57,9 @@ Cloudflare [Bindings](https://developers.cloudflare.com/pages/functions/bindings
 For detailed instructions on setting up bindings, refer to the Cloudflare documentation.
 
 ## Database Migrations
+
 Quick explaination of D1 set up:
+
 - D1 is a serverless database that follows SQLite convention.
 - Within Cloudflare pages and workers, you can directly query d1 with [client api](https://developers.cloudflare.com/d1/build-with-d1/d1-client-api/) exposed by bindings (eg. `env.BINDING`)
 - You can also query d1 via [rest api](https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database)
@@ -64,13 +68,16 @@ Quick explaination of D1 set up:
 - In dev mode (`bun run db:<migrate or studio>:dev`), Drizzle-kit (migrate and studio) directly modifies these files as regular SQlite db. While `bun run db:<migrate or studio>:prod` use d1-http driver to interact with remote d1 via rest api. Therefore we need to set env var at `.env.example`
 
 To generate migrations files:
+
 - `bun run db:generate`
 
 To apply database migrations:
+
 - For development: `bun run db:migrate:dev`
 - For production: `bun run db:migrate:prd`
 
 To inspect database:
+
 - For local database `bun run db:studio:dev`
 - For remote database `bun run db:studio:prod`
 
@@ -81,20 +88,10 @@ Don't forget to add the CORS policy to the R2 bucket. The CORS policy should loo
 ```json
 [
   {
-    "AllowedOrigins": [
-      "http://localhost:3000",
-      "https://your-domain.com"
-    ],
-    "AllowedMethods": [
-      "GET",
-      "PUT"
-    ],
-    "AllowedHeaders": [
-      "Content-Type"
-    ],
-    "ExposeHeaders": [
-      "ETag"
-    ]
+    "AllowedOrigins": ["http://localhost:3000", "https://your-domain.com"],
+    "AllowedMethods": ["GET", "PUT"],
+    "AllowedHeaders": ["Content-Type"],
+    "ExposeHeaders": ["ETag"]
   }
 ]
 ```
@@ -126,4 +123,3 @@ If you prefer manual setup:
 - Cost-effective scaling (e.g., $5/month for multiple high-traffic projects)
 
 Just change your Cloudflare account ID in the project settings, and you're good to go!
-
