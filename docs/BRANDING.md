@@ -4,7 +4,7 @@
 
 ### A. Purpose and value
 
-A clearly defined branding profile is far more than just a marketing tool; it forms the strategic core of [VRLY](/docs/BUSINESSPLAN.md)'s identity. It serves as a compass for business decisions, a magnet for talent, a foundation for customer loyalty and a key differentiator in the competitive environment. In markets characterized by rapid change and intense competition - especially in sectors such as IT, artificial intelligence (AI) and healthcare, which are frequently the subject of current analyses ([IT-P GmbH: Artificial Intelligence](https://www.it-p.de/leistungen/kuenstliche-intelligenz/)) - a concise brand identity is essential to build trust and stand out from competitors ([IT-P GmbH: Artificial Intelligence](https://www.it-p.de/leistungen/kuenstliche-intelligenz/)).
+A clearly defined branding profile is far more than just a marketing tool; it forms the strategic core of [VRLY](https://vrly.de)'s identity. It serves as a compass for business decisions, a magnet for talent, a foundation for customer loyalty and a key differentiator in the competitive environment. In markets characterized by rapid change and intense competition - especially in sectors such as IT, artificial intelligence (AI) and healthcare, which are frequently the subject of current analyses ([IT-P GmbH: Artificial Intelligence](https://www.it-p.de/leistungen/kuenstliche-intelligenz/)) - a concise brand identity is essential to build trust and stand out from competitors ([IT-P GmbH: Artificial Intelligence](https://www.it-p.de/leistungen/kuenstliche-intelligenz/)).
 
 The current market dynamics, driven by comprehensive digitalization processes ([BÄK: Thesenpapier KI Gesundheitsversorgung](https://www.bundesaerztekammer.de/fileadmin/user_upload/BAEK/Themen/Digitalisierung/Thesenpapier_KI_in_der_Gesundheitsversorgung_03.2025.pdf)) and the rapid advance of AI ([Medinside: KI-Trends Gesundheitswesen 2025](https://www.medinside.ch/de/2025-im-zeichen-der-ki-drei-wichtige-trends-fuer-das-gesundheitswesen-20250116)), create both enormous opportunities ([IT-P GmbH: Künstliche Intelligenz](https://www.it-p.de/leistungen/kuenstliche-intelligenz/)) and significant challenges ([BCG: Zukunftstechnologie KI 2025](https://www.bcg.com/press/15january2025-zukunftstechnologie-ki-2025-trifft-weltweite-dynamik-auf-deutsche-zuruckhaltung)). In this complex environment, a strong branding profile serves as an anchor. It creates clarity about the purpose and uniqueness of VRLY, both for internal teams and external stakeholders, and helps to communicate the specific value proposition in the midst of these trends.
 
@@ -13,8 +13,8 @@ The current market dynamics, driven by comprehensive digitalization processes ([
 The three central elements of a branding profile - mission, values and brand voice - are inextricably linked and must be coherently aligned to achieve authenticity and impact.
 
 - **Mission:** The "why" - the fundamental purpose and raison d'être of VRLY.
-- Values:\*\* The "How" - the guiding principles that define VRLY's actions and culture.
-- Brand Voice:\*\* The "What & How" of communication - the personality and style with which VRLY speaks.
+- **Values:** The "How" - the guiding principles that define VRLY's actions and culture.
+- **Brand Voice:** The "What & How" of communication - the personality and style with which VRLY speaks.
 
 Together, these elements form the foundation of the VRLY brand. They set direction, shape perception and drive behavior across all touchpoints.
 
@@ -31,10 +31,10 @@ If VRLY is in the healthcare or related field, the challenges highlighted in the
 A strong mission statement is characterized by the following features:
 
 - **Clear and concise:** Easy to understand and memorable.
-- Inspiring:\*\* Motivates employees and resonates with stakeholders.
-- Specific:\*\* Defines the core focus and strategic direction.
-- Future-oriented:\*\* Provides a long-term perspective.
-- Action-oriented:\*\* Guides strategic decisions.
+- **Inspiring:** Motivates employees and resonates with stakeholders.
+- **Specific:** Defines the core focus and strategic direction.
+- **Future-oriented:** Provides a long-term perspective.
+- **Action-oriented:** Guides strategic decisions.
 
 A weak mission statement is often generic, interchangeable and offers no clear direction (e.g. "To be the best provider in our industry"). A strong statement, on the other hand, clearly states the purpose and intended impact (e.g. "To revolutionize patient care through intuitive and safe AI solutions").
 
@@ -66,7 +66,7 @@ Similarly, **innovation** is a recurring theme that reflects the dynamics in the
 
 Values only unfold their effect when they become visible in daily actions. For each core value of VRLY, specific, observable behaviors should therefore be defined that are expected of all employees.
 
-- Example:\*\* If a value is "customer focus", associated behaviours could be: "We actively seek customer feedback and use it to improve", "We prioritize solutions that address real customer problems", "We communicate proactively, transparently and at eye level with our customers".
+- **Example:** If a value is "customer focus", associated behaviours could be: "We actively seek customer feedback and use it to improve", "We prioritize solutions that address real customer problems", "We communicate proactively, transparently and at eye level with our customers".
 - It is advisable to create an internal "values guide" that clearly describes the values and the associated behaviors and provides examples.
 
 ### **C. Ensuring authenticity and relevance**
@@ -105,7 +105,7 @@ The following table serves as a template to summarize the defined brand voice at
 | ---------------- | ------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
 | **Trustworthy**  | Reliable, authentic and transparent in all interactions | Clear communication about data security, open documentation of processes | Vague statements, hidden conditions, technical jargon without explanation |
 | **Innovative**   | Future-oriented and progressive in solution approaches  | Explaining new technologies clearly, focus on added value                | Technology for its own sake, complex technical terms without context      |
-| Empathetic\*\*   | Empathetic and understanding in dealing with customers  | Active listening, solution-oriented advice, clear language               | Impersonal standard answers, overly formal communication                  |
+| **Empathetic**   | Empathetic and understanding in dealing with customers  | Active listening, solution-oriented advice, clear language               | Impersonal standard answers, overly formal communication                  |
 | **Professional** | Competent and reliable in the provision of services     | Precise formulations, sound expertise, structured processes              | Colloquial language, non-binding promises, superficial explanations       |
 
 ## **V. Synthesis of the VRLY branding profile: The coherent identity**
@@ -128,10 +128,10 @@ A branding profile will only be fully effective if it is understood, accepted an
 
 **Recommendations:**
 
-- Communication:\*\* The defined profile must be communicated clearly and comprehensibly to all employees.
+- **Communication:** The defined profile must be communicated clearly and comprehensibly to all employees.
 - **Onboarding:** Integration of the profile into the induction process for new employees.
-- HR:\*\* Align recruitment criteria and performance appraisals with the core values.
-- Recognition:\*\* Visible recognition and reward of behaviors that embody the values.
+- **HR:** Align recruitment criteria and performance appraisals with the core values.
+- **Recognition:** Visible recognition and reward of behaviors that embody the values.
 - **Strategy:** Use the mission to guide strategic planning and goal setting.
 
 ### **B. External communication strategy**
@@ -141,7 +141,7 @@ All external touch points - marketing, sales, product development, customer serv
 **Recommendations:**
 
 - **Materials audit:** Review and update existing communication materials (website, brochures, presentations, etc.) for consistency with the branding profile ([Sanasearch: Practice Marketing Guide](https://www.sanasearch.ch/de/therapeuten-blog/artikel/praxismarketing-fuer-psychotherapeuten-psychiater-der-a-z-online-marketing-guide/)).
-- Training:\*\* Training customer-facing teams (sales, support) on how to embody the brand identity in their daily work.
+- **Training:** Training customer-facing teams (sales, support) on how to embody the brand identity in their daily work.
 - **Consistency:** Ensure that all new marketing and communication initiatives are aligned with the branding profile from the outset.
 
 ### **C. Brand advocacy and development**
