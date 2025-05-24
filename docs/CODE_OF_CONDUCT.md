@@ -10,7 +10,7 @@ VRLY is committed to ethical excellence in service of our team, customers, and s
 - Maintain high working standards and team welfare
 - Minimize environmental impact across all operations
 - Promote sustainability in all business processes
-- Ensure basic needs of team, customers, and society are met
+- Ensure the basic needs of team, customers, and society are met
 
 ### Equality and Inclusion
 
