@@ -1,0 +1,314 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: de-DE
+tone_instructions: |
+  Be a friendly, mentoring senior dev. Help juniors/newcomers understand best practices.
+  Explain the "why" & link docs. Give actionable advice/examples.
+  Use clear language. Frame feedback as growth. Blend with path instructions.
+early_access: true
+enable_free_tier: true
+reviews:
+  profile: chill
+  request_changes_workflow: true
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  high_level_summary_in_walkthrough: false
+  auto_title_placeholder: "@coderabbitai"
+  auto_title_instructions: ""
+  review_status: true
+  commit_status: true
+  fail_commit_status: true
+  collapse_walkthrough: false
+  changed_files_summary: true
+  sequence_diagrams: true
+  assess_linked_issues: true
+  related_issues: true
+  related_prs: true
+  suggested_labels: true
+  auto_apply_labels: true
+  suggested_reviewers: false
+  auto_assign_reviewers: false
+  poem: false
+  labeling_instructions:
+    - label: Feature
+      instructions: Adds new user-facing functionality or capabilities.
+    - label: Bug Fix
+      instructions: Corrects an error, bug, or unintended behavior in existing code.
+    - label: Improvement
+      instructions: >-
+        Enhances existing code, performance, reliability, or developer
+        experience (non-functional). Includes refactoring.
+    - label: Chore
+      instructions: >-
+        Maintenance tasks, build process updates, dependency bumps, config
+        changes (no production code change).
+    - label: Test
+      instructions: Adds or significantly updates tests (unit, integration, e2e).
+    - label: Docs
+      instructions: >-
+        Changes solely related to documentation (READMEs, guides, code
+        comments).
+    - label: Security
+      instructions: Addresses a security vulnerability or improves security posture.
+    - label: Hotfix
+      instructions: Urgent fix for a critical production issue (often cherry-picked).
+    - label: Dependencies
+      instructions: >-
+        Updates to project dependencies, libraries, frameworks, or runtime
+        versions.
+  path_filters: []
+  path_instructions:
+    - path: "*"
+      instructions: |
+        # General Coding Standards (Complements Linters/Formatters)
+        - Ensure all files use UTF-8 character encoding.
+        - Lines should end with LF (line feed).
+        - A newline character must be present at the end of every file.
+        - Trim all trailing whitespaces.
+        - Adhere to a maximum line length of 120 characters.
+        - TODO/FIXME comments: Address them or create corresponding issues before merging.
+        - Debugging code: Remove `console.log`, `debugger` statements, and other debugging helpers from production-bound code.
+        - Code Clarity: Strive for self-documenting code through clear naming (variables, functions, classes) and logical structure.
+        - YAGNI: Apply the "You Aren't Gonna Need It" principle. Avoid adding functionality until it's truly necessary.
+        - Internationalization (i18n):
+          - Externalize all user-facing strings into resource files if internationalization is a goal.
+          - Avoid string concatenation for translated segments; use template literals or parameterized strings that respect language structure.
+        # Testing Best Practices
+        - Test Naming: Use descriptive names for test files (e.g., `*.spec.ts`, `*.test.ts`) and keep them co-located with the source files.
+        - Test Cases: Clearly describe what each test (`describe` block) and individual case (`it` block) covers.
+        - Granularity: Each test case should ideally verify a single aspect or behavior. Multiple assertions are fine if they test the same logical unit.
+        - Independence: Ensure tests are independent and can run in any order without side effects on other tests.
+        - DRY Principle in Tests: Avoid duplicating logic in tests, but don't over-abstract to the point of obscurity.
+        - Edge Cases: Explicitly test edge cases and boundary conditions.
+        - Focus: Test the public API and observable behavior, not internal implementation details (avoid over-mocking).
+        - Mocks: Mock external dependencies to isolate tests and ensure reliability.
+        - Setup/Teardown: Use `beforeEach`/`afterEach` (or equivalent) for consistent test setup and cleanup.
+    - path: "**/*.ts"
+      instructions: |
+        # TypeScript Best Practices (Complements Biome Formatter & ESLint)
+        # Type System & Safety
+        - Explicit Types: Prefer explicit type annotations for variables, function parameters, and return types over implicit `any`.
+        - `any` vs `unknown`: Avoid `any` where possible. Use `unknown` for values with truly unknown types and perform type-checking before use.
+        - `import type`: Use `import type` for importing types and interfaces to ensure they are erased at compile time.
+        - Type Guards: Implement type guards for runtime type checking when dealing with unions or complex types.
+        - Reusable Types: Define reusable types/interfaces for common data structures. Use `interface` for object shapes and `type` for aliases, unions, intersections.
+        # Naming Conventions
+        - PascalCase: For types, interfaces, enums, and class names.
+        - camelCase: For variables, function names, and class properties/methods.
+        # Functions & Class Design
+        - Single Responsibility Principle (SRP): Functions and classes should have a single, well-defined responsibility.
+        - Brevity: Keep functions and methods concise (aim for 10-20 lines as a guideline, decompose larger ones).
+        - Parameters: Limit the number of function parameters (3-4 is a good guideline). Pass an object for more complex inputs.
+        - Early Exits: Use guard clauses and return early to reduce nesting and improve readability.
+        - Side Effects: Minimize side effects. Functions should ideally rely on inputs to produce outputs. Clearly document any necessary side effects.
+        - Immutability: Prefer immutable data structures and patterns where practical.
+        - Composition over Inheritance: Favor composition for code reuse and flexibility. Avoid deep inheritance hierarchies.
+        - Error Handling: Implement robust error handling using try/catch blocks, error returns, or specific error types.
+        - Readability: Use descriptive names. Add comments only for complex logic that isn't self-evident from the code.
+        - `public` Modifier: While not strictly necessary for JavaScript output, explicitly using `public` (and `private`/`protected`) improves code clarity and intent in TypeScript classes.
+    - path: "**/*.js" # Includes .mjs if not caught by a more specific rule
+      instructions: |
+        # JavaScript Best Practices (Complements Biome Formatter & ESLint)
+        - Modern JavaScript: Use ES6+ features (e.g., `let`/`const`, arrow functions, template literals, destructuring) where appropriate for clarity and conciseness.
+        - Strict Mode: Ensure `'use strict';` is enabled or implicitly active (e.g., in ES modules).
+        - Readability: Follow similar principles as TypeScript for naming, function design (SRP, brevity, early exits), and error handling.
+        - Comments: Use comments to explain non-obvious logic.
+        - Avoid global variables where possible.
+    - path: "**/*.astro"
+      instructions: |
+        # Astro Component Best Practices
+        - Component Structure: Ensure components are well-structured. Props should be clearly defined in the frontmatter for data input. Use slots effectively for content projection.
+        - Frontmatter (---):
+          - Use the `---` code fence for server-side JavaScript/TypeScript logic.
+          - Define props using `Astro.props` and provide types for them (e.g., `interface Props { title: string; } const { title } = Astro.props;`).
+          - Perform data fetching and other server-side operations here.
+        - Client-Side Interactivity:
+          - Use `<script>` tags for client-side JavaScript sparingly.
+          - Prefer Astro's partial hydration using client directives (`client:load`, `client:idle`, `client:visible`, `client:media`, `client:only="vue"` etc.) to ship minimal JavaScript.
+          - Clearly justify the need for any client-side script that isn't using a directive.
+        - Styling:
+          - Styles in `<style>` tags are scoped by default, leverage this to avoid CSS conflicts.
+          - Use `<style is:global>` or CSS Modules deliberately if global styles or more complex CSS organization is needed.
+          - Ensure consistency with the AuraFlow™ Lite Design System (if applicable to the component, as mentioned in README).
+        - Accessibility (A11y):
+          - Write components that produce semantic HTML (e.g., use `<nav>`, `<article>`, `<aside>`, `<button>`).
+          - Ensure interactive elements are keyboard accessible.
+          - Use ARIA attributes appropriately where semantic HTML alone is insufficient.
+          - Test for basic screen reader compatibility.
+        - Performance:
+          - Avoid rendering large amounts of data or complex components unnecessarily.
+          - Optimize images and other assets.
+          - Leverage Astro's features for static generation and partial hydration.
+        - Slots: Use named slots for more complex component APIs and default slot content for flexibility.
+    - path: "astro.config.mjs"
+      instructions: |
+        # Astro Configuration (astro.config.mjs)
+        - Adapter: Ensure the `@astrojs/cloudflare` adapter is correctly configured, especially `platformProxy: { enabled: true }` for full Cloudflare compatibility.
+        - Integrations: Verify that all necessary Astro integrations are included and properly configured.
+        - Server Options: Confirm `server: { port: 1312 }` (or the intended development port) is set as per project standards.
+        - Paths: Check `srcDir`, `publicDir`, `outDir` if customized from defaults.
+        - TypeScript: Ensure tsconfig path (`tsconfigPath`) is correct if non-standard.
+    - path: "wrangler.jsonc"
+      instructions: |
+        # Wrangler Configuration (wrangler.jsonc)
+        - Name: Verify the `name` field matches the intended Cloudflare Worker service name ("vrly-de").
+        - Entry Point: Ensure `main` correctly points to the worker entry script (e.g., `./dist/_worker.js/index.js` for Astro projects).
+        - Compatibility:
+          - `compatibility_date` should be recent (current: "2025-05-08") and aligned with tested Cloudflare runtime features.
+          - `compatibility_flags` (e.g., `nodejs_compat`) must be included if Node.js APIs are utilized in Workers.
+        - Assets: The `assets` binding for static files (e.g., `binding = "ASSETS"`, `directory = "./dist"`) must be correctly configured for Astro builds.
+        - Bindings: All necessary Cloudflare service bindings (KV, D1, R2, Queues, Vectorize, AI, Durable Objects, Services as per Tech Stack) must be declared. Ensure binding names are consistent with code usage.
+        - Environment Variables & Secrets: Review `vars` for non-sensitive configurations. Sensitive data must use secrets and not be hardcoded.
+        - Placement: If using `placement: { mode: "smart" }`, ensure it's intentional and understood.
+        - Observability: Ensure `observability: { enabled: true }` is set for better monitoring.
+    - path: "**/*.json,**/*.jsonc"
+      instructions: |
+        # JSON and JSONC Formatting (Complements Biome Formatter)
+        - Indentation: Use 2 spaces for indentation.
+        - Wrapping: Array and object items should generally be on new lines if the structure is complex or long.
+        - Trailing Commas: Strictly avoid trailing commas in plain `.json` files. For `.jsonc`, if Biome is configured to allow them, ensure consistency.
+        - Property Alignment: Properties should not be aligned (often handled by formatters).
+        - Spacing:
+          - Add a space after colons (key-value pairs) and commas (in arrays/objects).
+          - Do not add a space before colons or commas.
+        - Comments: For JSONC, use comments (// or /* */) appropriately to explain non-obvious parts of the configuration.
+    - path: "**/*.md"
+      instructions: |
+        # Markdown Content and Structure (Complements Markdownlint)
+        - Clarity: Ensure content is clear, concise, and easy to understand for the intended audience.
+        - Structure: Use headings (H1, H2, H3, etc.) logically to structure the document effectively.
+        - Formatting: Use Markdown syntax correctly for lists, code blocks, links, images, tables, emphasis, etc.
+        - Links: Verify that all internal and external links are working, relevant, and accessible.
+        - Code Blocks: Specify the language for syntax highlighting in code blocks (e.g., \`\`\`typescript or \`\`\`sh).
+        - Readability: Break up long paragraphs. Use bolding or italics sparingly and meaningfully for emphasis.
+        - READMEs: Ensure `README.md` files are comprehensive, covering project overview, goals, tech stack, setup instructions, development process, deployment, and contribution guidelines. Ensure it aligns with the actual project state.
+    - path: "**/*.sql"
+      instructions: |
+        # SQL File Best Practices (especially for Drizzle Migrations)
+        - DDL Statements: Verify `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE` statements accurately reflect intended schema changes.
+        - DML Statements: If `INSERT`, `UPDATE`, `DELETE` statements are present (e.g., for data seeding or migration), ensure they are correct, idempotent if necessary, and performant.
+        - Constraints & Indexes: Check that `PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE` constraints, and `INDEX` definitions are correct and align with data relationships and query patterns.
+        - Migration Logic: For Drizzle (or other ORM) generated migration files, review the sequence of operations. Confirm it's logical and handles data transformations correctly if any.
+        - Idempotency & Reversibility: Consider if migrations should be idempotent (safe to run multiple times) or if a down-migration script is needed.
+        - Performance: Be mindful of potential performance impacts of schema changes or data migrations on large tables.
+        - Generated SQL Review: If generated by a tool like `drizzle-kit`, double-check that the output SQL is as expected and doesn't have unintended consequences.
+    - path: "**/*.yaml,**/*.yml"
+      instructions: |
+        # YAML File Best Practices (Complements Yamllint)
+        - Indentation: Use exactly 2 spaces per indentation level. Do not use tabs.
+        - Quotes:
+          - Use quotes for strings consistently. Single or double quotes are acceptable, but maintain consistency within a file.
+          - Ensure strings that could be misinterpreted as numbers, booleans, or other types are quoted (e.g., "123", "true", "null").
+          - Avoid unnecessary quoting of simple, unambiguous strings.
+        - Key Quoting: Only quote keys if they contain special characters (e.g., spaces, colons, dashes at the start) or could be misinterpreted.
+        - Comments: Use `#` for comments. Provide clear explanations for configurations, especially for complex structures or non-obvious settings.
+        - Readability: Strive for clear and readable YAML. Group related items and use whitespace effectively.
+        - Tooling: Utilize tools like `yamllint` to automatically check for syntax errors, stylistic issues, and best practices.
+        - Consistency: Ensure that YAML files within the project follow a consistent style.
+  abort_on_close: true
+  disable_cache: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords: []
+    labels: []
+    drafts: false
+    base_branches:
+      - "^release/.*"
+      - "^dev/.*"
+  finishing_touches:
+    docstrings:
+      enabled: true
+  tools:
+    ast-grep:
+      rule_dirs: []
+      util_dirs: []
+      essential_rules: true
+      packages: []
+    shellcheck:
+      enabled: true
+    ruff:
+      enabled: false
+    markdownlint:
+      enabled: true
+    github-checks:
+      enabled: true
+      timeout_ms: 90000
+    languagetool:
+      enabled: true
+      enabled_rules: []
+      disabled_rules: []
+      enabled_categories: []
+      disabled_categories: []
+      enabled_only: false
+      level: default
+    biome:
+      enabled: true
+    hadolint:
+      enabled: false
+    swiftlint:
+      enabled: false
+    phpstan:
+      enabled: false
+    golangci-lint:
+      enabled: false
+    yamllint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    checkov:
+      enabled: true
+    detekt:
+      enabled: false
+    eslint:
+      enabled: true
+    rubocop:
+      enabled: false
+    buf:
+      enabled: false
+    regal:
+      enabled: false
+    actionlint:
+      enabled: true
+    pmd:
+      enabled: false
+    cppcheck:
+      enabled: false
+    semgrep:
+      enabled: true
+    circleci:
+      enabled: false
+    sqlfluff:
+      enabled: true
+    prismaLint:
+      enabled: false
+    oxc:
+      enabled: false
+    shopifyThemeCheck:
+      enabled: false
+chat:
+  auto_reply: true
+  integrations:
+    jira:
+      usage: disabled
+    linear:
+      usage: disabled
+knowledge_base:
+  opt_out: false
+  web_search:
+    enabled: true
+  learnings:
+    scope: auto
+  issues:
+    scope: auto
+  jira:
+    usage: disabled
+    project_keys: []
+  linear:
+    usage: disabled
+    team_keys: []
+  pull_requests:
+    scope: auto
+code_generation:
+  docstrings:
+    language: en-US
+    path_instructions: []
