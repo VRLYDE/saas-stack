@@ -1,0 +1,29 @@
+---
+description: 
+globs: **/*.astro
+alwaysApply: false
+---
+### Astro
+
+- **Component Structure**: Ensure components are well-structured. Props should be with types in the frontmatter for data input. Use slots effectively for content projection.
+- **Frontmatter (`---`)**:
+  - Use the `---` code fence for server-side JavaScript/TypeScript logic.
+  - Define props using `Astro.props` and provide types for them (e.g., `interface Props { title: string; } const { title } = Astro.props;`).
+  - Perform data fetching and other server-side operations here.
+- **Client-Side Interactivity**:
+  - Use `<script>` tags for client-side JavaScript sparingly.
+  - Prefer Astro's partial hydration using client directives (`client:load`, `client:idle`, `client:visible`, `client:media`, `client:only="react"`, etc.) to ship minimal JavaScript.
+  - Clearly justify the need for any client-side script that isn't using a framework integration or a standard Astro client directive.
+- **Styling**:
+  - Styles in `<style>` tags are scoped by default; leverage this to avoid CSS conflicts.
+  - Use `<style is:global>` or CSS Modules deliberately if global styles or more complex CSS organization is needed.
+- **Accessibility (A11y)**:
+  - Write components that produce semantic HTML (e.g., use `<nav>`, `<article>`, `<aside>`, `<button>`).
+  - Ensure interactive elements are keyboard accessible.
+  - Use ARIA attributes appropriately where semantic HTML alone is insufficient.
+  - Test for basic screen reader compatibility.
+- **Performance**:
+  - Avoid rendering large amounts of data or complex components unnecessarily.
+  - Optimize images and other assets.
+  - Leverage Astro's features for static generation and partial hydration.
+- **Slots**: Use named slots for more complex component APIs and default slot content for flexibility.

@@ -1,0 +1,17 @@
+---
+description: 
+globs: **/*.json,**/*.jsonc
+alwaysApply: false
+---
+### JSON and JSONC
+
+These complement the Biome formatter.
+
+- **Indentation**: Use 2 spaces for indentation.
+- **Wrapping**: Array and object items should generally be on new lines if the structure is complex or long.
+- **Trailing Commas**: Strictly avoid trailing commas in plain `.json` files. For `.jsonc`, if the formatter is configured to allow them, ensure consistency.
+- **Property Alignment**: Properties should not be aligned (usually handled by formatters).
+- **Spacing**:
+  - Add a space after colons (key-value pairs) and commas (in arrays/objects).
+  - Do not add a space before colons or commas.
+- **Comments**: For JSONC, use comments (`//` or `/* */`) appropriately to explain non-obvious parts of the configuration.

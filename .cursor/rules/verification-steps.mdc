@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+## Verification Steps for AI
+
+Before finalizing your suggestions or code:
+
+- **Alignment**: Does your response align with the high-level overview and specific guidelines for the technologies and file types involved?
+- **Imports & Dependencies**: Are all necessary imports included? If new dependencies are introduced, mention them.
+- **UI/UX**: For UI components, do they follow Shadcn UI/Radix patterns? Are they responsive and accessible?
+- **Cloudflare**: If suggesting new Cloudflare resources, have you mentioned necessary @wrangler.jsonc updates?
+- **TypeScript**: Is strong typing used? Do names follow conventions? Are types/interfaces used appropriately?
+- **Functionality**: Does the code achieve the requested functionality correctly and efficiently?
+- **Clarity**: Is the code clear, concise, and easy to understand?
+- **Error Handling**: Is error handling robust and appropriate?
+- **Security**: Have potential security implications been considered? (e.g., input sanitization, auth checks).
+
+By following these rules, you will help maintain a high standard of quality and consistency across this project.

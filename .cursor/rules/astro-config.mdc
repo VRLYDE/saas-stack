@@ -1,0 +1,12 @@
+---
+description: 
+globs: astro.config.mjs
+alwaysApply: false
+---
+### Astro Configuration
+
+- **Adapter**: Ensure the `@astrojs/cloudflare` adapter is correctly configured, especially `platformProxy: { enabled: true }` for full Cloudflare compatibility when deploying to Pages Functions.
+- **Integrations**: Verify that all necessary Astro integrations (e.g., React, Tailwind) are included and properly configured.
+- **Server Options**: Confirm `server: { port: ... }` set as per project standards for development.
+- **Paths**: Check `srcDir`, `publicDir`, `outDir` if customized from defaults.
+- **TypeScript**: Ensure `tsconfigPath` is correct if non-standard.

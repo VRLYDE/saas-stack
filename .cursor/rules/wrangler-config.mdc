@@ -1,0 +1,23 @@
+---
+description: 
+globs: wrangler.jsonc
+alwaysApply: false
+---
+### Wrangler Configuration
+
+- **`name`**: Verify the `name` field matches the intended Cloudflare service name.
+- **`main`**: Ensure `main` correctly points to the worker entry script (e.g., `./dist/_worker.js/index.js` for Astro SSR builds, or the correct entry for other types of Workers).
+- **Compatibility**:
+  - `compatibility_date` should be recent and aligned with tested Cloudflare runtime features.
+  - `coms` (e.g., `nodejs_compat`) must be included if Node.js APIs are utilized in Workers.
+- **`assets` / `pages_build_output_dir`**:
+  - For Pages: Ensure `pages_build_output_dir` points to the correct static output directory (e.g., `./dist` for Astro).
+  - For Workers Sites (less common with Pages): The `[site]` binding for static files must be correctly configured.
+- **Bindings**:
+  - All necessary Cloudflare service bindings (KV namespaces, D1 databases, R2 buckets, Queues, Vectorize indexes, AI models, Durable Objects, Service bindings) must be declared.
+  - Ensure binding names in `wrangler.jsonc` are consistent with how they are accessed in the code (e.g., `env.MY_KV_NAMESPACE`).
+- **Environment Variables & Secrets**:
+  - Review `vars` for non-sensitive configurations.
+  - Sensitive data must use secrets (managed via `wrangler secret put ...`) and not be hardcoded in `wrangler.jsonc`.
+- **Placement**: If using `placement: { mode: "smart" }`, ensure it's intentional and understood for Workers.
+- **Observability**: Consider `analytics_engine_datasets` or other observability features if needed.

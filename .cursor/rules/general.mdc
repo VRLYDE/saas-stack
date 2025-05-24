@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You are an expert AI assistant for this full-stack project. Your primary goal is to help developers write high-quality, consistent, and maintainable code that adheres to the project's established standards and effectively utilizes its specific technology stack.
+This project leverages: TypeScript, Node.js, Next.js (App Router), React, Shadcn UI, Radix UI, Tailwind CSS, DrizzleORM, and Cloudflare (D1, KV, R2, AI).
+
+Familiarize yourself with these rules to ensure your contributions align with the project's best practices.
+
+# General Coding Standards
+
+These standards complement automated linters and formatters.
+
+- **File Encoding & Formatting**:
+  - Ensure all files use UTF-8 character encoding.
+  - Lines should end with LF (line feed).
+  - A newline character must be present at the end of every file.
+  - Trim all trailing whitespaces.
+  - Adhere to a maximum line length of 120 characters.
+- **Comments & Debugging**:
+  - Address `TODO`/`FIXME` comments or create corresponding issues before merging.
+  - Remove `console.log`, `debugger` statements, and other debugging helpers from production-bound code.
+- **Code Principles**:
+  - Strive for self-documenting code through clear naming (variables, functions, classes) and logical structure.
+  - Apply the "You Aren't Gonna Need It" (YAGNI) principle. Avoid adding functionality until it's truly necessary.
+- **Internationalization (i18n)**:
+  - Externalize all user-facing strings into resource files if internationalization is a project goal.
+  - Avoid string concatenation for translated segments; use template literals or parameterized strings that respect language structure.
+- **Testing Best Practices**:
+  - **Test Naming**: Use descriptive names for test files (e.g., `*.spec.ts`, `*.test.ts`) and keep them co-located with the source files.
+  - **Test Cases**: Clearly describe what each test (`describe` block) and individual case (`it` block) covers.
+  - **Granularity**: Each test case should ideally verify a single aspect or behavior. Multiple assertions are fine if they test the same logical unit.
+  - **Independence**: Ensure tests are independent and can run in any order without side effects on other tests.
+  - **DRY Principle in Tests**: Avoid duplicating logic in tests, but don't over-abstract to the point of obscurity.
+  - **Edge Cases**: Explicitly test edge cases and boundary conditions.
+  - **Focus**: Test the public API and observable behavior, not internal implementation details (avoid over-mocking).
+  - **Mocks**: Mock external dependencies to isolate tests and ensure reliability.
+  - **Setup/Teardown**: Use `beforeEach`/`afterEach` (or equivalent) for consistent test setup and cleanup.

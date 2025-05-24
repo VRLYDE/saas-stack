@@ -1,0 +1,14 @@
+---
+description: 
+globs: **/*.js,**/*.mjs
+alwaysApply: false
+---
+## JavaScript Best Practices
+
+These guidelines complement Biome Formatter & ESLint.
+
+- **Modern JavaScript**: Use ES6+ features (e.g., `let`/`const`, arrow functions, template literals, destructuring) where appropriate for clarity and conciseness.
+- **Strict Mode**: Ensure `'use strict';` is enabled or implicitly active (e.g., in ES modules).
+- **Readability**: Follow similar principles as TypeScript for naming, function design (SRP, brevity, early exits), and error handling.
+- **Comments**: Use comments to explain non-obvious logic.
+- **Globals**: Avoid global variables where possible.
