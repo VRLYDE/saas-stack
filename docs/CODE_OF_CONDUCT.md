@@ -2,55 +2,6 @@
 
 VRLY is committed to ethical excellence in service of our team, customers, and society. Our ethics policy guides us toward a sustainable, fair, and human-centered digital future.
 
-## Core Principles
-
-### People and Environment First
-
-- Prioritize human and environmental well-being over profit
-- Maintain high working standards and team welfare
-- Minimize environmental impact across all operations
-- Promote sustainability in all business processes
-- Ensure the basic needs of team, customers, and society are met
-
-### Equality and Inclusion
-
-- Zero tolerance for discrimination
-- Active promotion of equal opportunities
-- Support for minority rights and representation
-- Inclusive digital transformation
-- Protection of rights for all gender identities and orientations
-- Equal access to opportunities regardless of background
-
-### Integrity and Transparency
-
-- Open dialogue culture
-- Rejection of corrupt practices
-- Clear accountability measures
-- Public documentation of ethical performance
-- Sustainable relationship building
-- Transparent business practices
-
-### Environmental Stewardship
-
-- Active promotion of green technologies
-- Regular assessment of ecological impact
-- Continuous process optimization for sustainability
-- Ecological footprint monitoring
-- Environmental protection initiatives
-
-### Continuous Improvement
-
-- Anonymous reporting mechanisms
-- Regular ethical audits
-- Measurable goals and public accountability
-- Active stakeholder engagement
-- Self-reflection and adaptation
-- Clear goal setting and review processes
-
-## Enforcement
-
-We maintain clear mechanisms for reporting ethical concerns and take appropriate action against violations. Our commitment to these principles is absolute and reflected in all aspects of our operations. Violations are addressed with appropriate measures commensurate with their severity.
-
 ## People and the environment always before profit
 
 We set priorities: People and their environment come before profit. It is important to us that we do not put profit maximization above the basic needs of our team, our customers and society as a whole. We constantly review and adapt our working standards and conditions to ensure the wellbeing of our team. We constantly strive to reduce our environmental impact and promote sustainability in all our business processes.
