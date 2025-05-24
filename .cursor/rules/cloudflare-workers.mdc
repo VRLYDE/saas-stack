@@ -87,7 +87,7 @@ You are an advanced assistant specialized in generating Cloudflare Workers code.
 {
   "name": "app-name-goes-here", // name of the app
   "main": "src/index.ts", // default file
-  "compatibility_date": "2025-05-24",
+  "compatibility_date": "$CURRENT_DATE",
   "compatibility_flags": ["nodejs_compat"], // Enable Node.js compatibility
   "observability": {
     // Enable logging by default
@@ -408,7 +408,7 @@ export default app
 {
   "name": "auth-worker",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "kv_namespaces": [
     {
       "binding": "AUTH_TOKENS",
@@ -489,7 +489,7 @@ const requests = batch.messages.map(msg => msg.body);
 {
   "name": "request-logger-consumer",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "queues": {
         "producers": [{
       "name": "request-queue",
@@ -570,7 +570,7 @@ const sql = postgres(env.HYPERDRIVE.connectionString)
 {
   "name": "hyperdrive-postgres",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
@@ -709,7 +709,7 @@ let url = new URL(req.url);
 {
   "name": "workflows-starter",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "workflows": [
     {
       "name": "workflows-starter",
@@ -771,7 +771,7 @@ let userId = url.searchParams.get("userId");
 {
   "name": "analytics-engine-example",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "analytics_engine_datasets": [
       {
         "binding": "<BINDING_NAME>",
@@ -861,7 +861,7 @@ let url = searchParams.get("url");
 {
   "name": "browser-rendering-example",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "$CURRENT_DATE",
   "browser": [
     {
       "binding": "BROWSER_RENDERING",
@@ -916,7 +916,7 @@ const url = new URL(request.url);
 {
 "name": "my-app",
 "main": "src/index.ts",
-"compatibility_date": "<TBD>",
+"compatibility_date": "$CURRENT_DATE",
 "assets": { "directory": "./public/", "not_found_handling": "single-page-application", "binding": "ASSETS" },
 "observability": {
 "enabled": true
