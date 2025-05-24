@@ -1,4 +1,4 @@
-# Ethics Policy (by 💙 WeMake)
+# Ethics Policy
 
 VRLY is committed to ethical excellence in service of our team, customers, and society. Our ethics policy guides us toward a sustainable, fair, and human-centered digital future.
 
@@ -74,3 +74,9 @@ We recognize our responsibility to the environment and work tirelessly to protec
 ## Continuous improvement and responsibility
 
 Our team, our customers and our partners have the right and are encouraged to point out ethical missteps. To this end, we have mechanisms in place that allow violations to be reported anonymously and without hindrance. We are also committed to constant self-reflection and further improvements. To this end, we set clear and measurable goals, the fulfillment of which we periodically review and publicly document.
+
+---
+
+_This ethics policy represents the core foundation of 💙 WeMake.cx. All projects, products and services delivered with this policy are subject to strict compliance with this policy. The source of this policy can always be found at [https://wemake.cx/legal/ethics/](https://wemake.cx/legal/ethics/)._
+
+_Maintained by the 💙 WeMake Ethics Division | [🔗 WeMake.cx](https://wemake.cx)_ | Hannover, Germany

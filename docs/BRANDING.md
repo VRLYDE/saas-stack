@@ -159,3 +159,9 @@ The high speed of change, which is visible in areas such as AI development ([Med
 ## **VII Conclusion**
 
 Developing a clear, compelling and high-quality branding profile that defines VRLY's mission, values and brand voice is a fundamental strategic step. It lays the foundation for a coherent internal culture, a differentiated market positioning and a trusting relationship with customers and partners. This process requires careful consideration, internal coordination and the willingness to consistently live the defined identity and adapt it if necessary. A strong branding profile is not a one-off task, but an ongoing process that will help VRLY to navigate successfully in a dynamic environment and create sustainable value.
+
+---
+
+_This branding document provides guidance for the development of a strong, authentic and relevant brand identity for VRLY._
+
+_Maintained by the 💙 WeMake DevOps Division | [🔗 WeMake.cx](https://wemake.cx)_ | Hannover, Germany

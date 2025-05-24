@@ -1,7 +1,5 @@
 # Security Policy
 
-This Security Policy was last updated on May 24, 2025 and applies to citizens and permanent residents of the European Economic Area and Switzerland.
-
 ## Technical and organizational measures
 
 We use technical and organizational measures to ensure the security and confidentiality of the personal data we process. These include, among others:
@@ -48,3 +46,9 @@ All our team members and service providers are required to comply with the secur
 ## Updates
 
 We may occasionally change or update this Security Policy to reflect changes in our practices or for other operational, legal or regulatory reasons. We encourage you to periodically review this policy to stay informed about our privacy practices.
+
+---
+
+_This security policy provides a comprehensive overview of the security measures VRLY takes to protect the security and confidentiality of your personal data._
+
+_Maintained by the 💙 WeMake DevOps Division | [🔗 WeMake.cx](https://wemake.cx)_ | Hannover, Germany
