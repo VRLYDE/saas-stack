@@ -222,7 +222,7 @@ const [client, server] = Object.values(webSocketPair);
      );
     },
 
-    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) void | Promise<void> {
+    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean): void | Promise<void> {
      // If the client closes the connection, the runtime will invoke the webSocketClose() handler.
      ws.close(code, "Durable Object is closing WebSocket");
     },
@@ -1369,7 +1369,7 @@ async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer): void | Pro
 ws.send(message)
 },
 
-async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) void | Promise<void> {
+async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean): void | Promise<void> {
 // Invoked when a client closes the connection.
 ws.close(code, "<message>");
 },
