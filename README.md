@@ -55,7 +55,7 @@ For detailed instructions on setting up bindings, refer to the Cloudflare docume
 
 ## Database Migrations
 
-Quick explaination of D1 set up:
+Quick explanation of D1 set up:
 
 - D1 is a serverless database that follows SQLite convention.
 - Within Cloudflare pages and workers, you can directly query d1 with [client api](https://developers.cloudflare.com/d1/build-with-d1/d1-client-api/) exposed by bindings (eg. `env.BINDING`)
