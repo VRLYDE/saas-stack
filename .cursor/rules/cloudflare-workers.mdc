@@ -830,7 +830,7 @@ let url = searchParams.get("url");
 
     if (url) {
       url = new URL(url).toString(); // normalize
-      const browser = await puppeteer.launch(env.MYBROWSER);
+      const browser = await puppeteer.launch(env.BROWSER_RENDERING);
       const page = await browser.newPage();
       await page.goto(url);
       // Parse the page content
