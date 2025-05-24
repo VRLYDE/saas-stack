@@ -9,7 +9,7 @@ alwaysApply: false
 - **`main`**: Ensure `main` correctly points to the worker entry script (e.g., `./dist/_worker.js/index.js` for Astro SSR builds, or the correct entry for other types of Workers).
 - **Compatibility**:
   - `compatibility_date` should be recent and aligned with tested Cloudflare runtime features.
-  - `coms` (e.g., `nodejs_compat`) must be included if Node.js APIs are utilized in Workers.
+  - `compatibility_flags` (e.g., `nodejs_compat`) must be included if Node.js APIs are utilized in Workers.
 - **`assets` / `pages_build_output_dir`**:
   - For Pages: Ensure `pages_build_output_dir` points to the correct static output directory (e.g., `./dist` for Astro).
   - For Workers Sites (less common with Pages): The `[site]` binding for static files must be correctly configured.
