@@ -13,11 +13,11 @@ We use technical and organizational measures to ensure the security and confiden
 
 ### What are V-Codes?
 
-The V-codes represent our internal code system for confidentiality levels and were originally created by 💙 WeMake as part of `cn23-Identity`. They mark the level of confidentiality that certain data or resources have in relation to our work. The aim is to make it easier for VRLY Team members to recognize and correctly handle sensitive information. The V-codes range from publicly available information (VC0) to closely guarded secrets (VC3).
+The V-codes represent our internal code system for confidentiality levels and were created by 💙 WeMake as part of `cn23-Identity`. They mark the level of confidentiality that certain data or resources have in relation to our work. The aim is to make it easier for VRLY Team members to recognize and correctly handle sensitive information. The V-codes range from publicly available information (VC0) to closely guarded secrets (VC3).
 
 ### Public VC0
 
-These documents can be easily distributed worldwide as they do not contain any confidential information.
+These documents can be easily distributed worldwide, as they do not contain any confidential information.
 
 ### Internal VC1
 
