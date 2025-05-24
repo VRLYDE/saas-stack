@@ -71,7 +71,7 @@ To generate migrations files:
 To apply database migrations:
 
 - For development: `bun run db:migrate:dev`
-- For production: `bun run db:migrate:prd`
+- For production: `bun run db:migrate:prod`
 
 To inspect database:
 
