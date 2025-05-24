@@ -299,7 +299,7 @@ async fetch(request) {
 // If there is no alarm currently set, set one for 10 seconds from now
 let currentAlarm = await this.storage.getAlarm();
 if (currentAlarm == null) {
-this.storage.setAlarm(Date.now() + 10 \_ SECONDS);
+this.storage.setAlarm(Date.now() + 10 * SECONDS);
 }
 }
 async alarm(alarmInfo) {
@@ -311,7 +311,7 @@ console.log("This alarm event has been attempted ${alarmInfo?.retryCount} times 
 }
 
 // Set a new alarm for 10 seconds from now before exiting the handler
-this.storage.setAlarm(Date.now() + 10 \_ SECONDS);
+this.storage.setAlarm(Date.now() + 10 * SECONDS);
 }
 }
 
