@@ -74,7 +74,7 @@ You are an advanced assistant specialized in generating Cloudflare Workers code.
   - Required bindings
   - Environment variables
   - Compatibility flags
-  - Set compatibility_date = "2025-03-07"
+  - Set compatibility_date = "2025-05-24"
   - Set compatibility_flags = ["nodejs_compat"]
   - Set `enabled = true` and `head_sampling_rate = 1` for `[observability]` when generating the wrangler configuration
   - Routes and domains (only if applicable)
@@ -87,7 +87,7 @@ You are an advanced assistant specialized in generating Cloudflare Workers code.
 {
   "name": "app-name-goes-here", // name of the app
   "main": "src/index.ts", // default file
-  "compatibility_date": "2025-02-11",
+  "compatibility_date": "2025-05-24",
   "compatibility_flags": ["nodejs_compat"], // Enable Node.js compatibility
   "observability": {
     // Enable logging by default
