@@ -1,0 +1,19 @@
+---
+description: 
+globs: **/*.yaml,**/*.yml
+alwaysApply: false
+---
+### YAML
+
+These complement Yamllint.
+
+- **Indentation**: Use exactly 2 spaces per indentation level. Do not use tabs.
+- **Quotes**:
+  - Use quotes for strings consistently. Single or double quotes are acceptable, but maintain consistency within a file.
+  - Ensure strings that could be misinterpreted as numbers, booleans, or other types are quoted (e.g., `"123"`, `"true"`, `"null"`).
+  - Avoid unnecessary quoting of simple, unambiguous strings.
+- **Key Quoting**: Only quote keys if they contain special characters (e.g., spaces, colons, dashes at the start) or could be misinterpreted.
+- **Comments**: Use `#` for comments. Provide clear explanations for configurations, especially for complex structures or non-obvious settings.
+- **Readability**: Strive for clear and readable YAML. Group related items and use whitespace effectively.
+- **Tooling**: Be aware that tools like `yamllint` help enforce syntax and style.
+- **Consistency**: Ensure that YAML files within the project follow a consistent style.

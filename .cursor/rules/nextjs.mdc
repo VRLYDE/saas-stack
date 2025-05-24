@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Next.js & React Specifics
+
+- **Component Philosophy**:
+  - Use functional components with TypeScript interfaces.
+  - Structure components: exported component, subcomponents, helpers, static content, types.
+- **JSX**:
+  - Use declarative JSX.
+- **UI & Styling**:
+  - Utilize Shadcn UI, Radix UI, and Tailwind CSS for components and styling.
+  - Implement responsive design with Tailwind CSS using a mobile-first approach.
+- **Performance Optimization**:
+  - **Minimize Client-Side Rendering**:
+    - Minimize the use of `'use client'`. Favor React Server Components (RSC) and Next.js SSR capabilities.
+    - `'use client'` should primarily be used for components requiring Web API access (e.g., event listeners, direct DOM manipulation) or React hooks like `useState`, `useEffect`. Keep these components small and isolated.
+    - Avoid using `'use client'` for data fetching or state management that can be handled on the server or through URL state.
+  - **Suspense**: Wrap client components in `<Suspense>` with an appropriate fallback UI.
+  - **Dynamic Loading**: Use `next/dynamic` for non-critical components to reduce initial bundle size.
+  - **Image Optimization**:
+    - Use the WebP format where possible.
+    - Include `width` and `height` attributes for images to prevent layout shifts.
+    - Implement lazy loading for images below the fold.
+- **State Management**:
+  - Use `nuqs` for managing state via URL search parameters, especially for filter states, tabs, etc.
+- **Web Vitals**:
+  - Strive to optimize Core Web Vitals: Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), and First Input Delay (FID) / Interaction to Next Paint (INP).
+- **Data Fetching, Rendering, and Routing**:
+  - Adhere to the official Next.js documentation for best practices in data fetching (Server Components, Route Handlers, SWR/React Query if client-side fetching is necessary), rendering strategies (SSR, SSG, ISR), and routing (App Router conventions).

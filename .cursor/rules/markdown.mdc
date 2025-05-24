@@ -1,0 +1,23 @@
+---
+description: 
+globs: **/*.md
+alwaysApply: false
+---
+### Markdown
+
+These complement Markdownlint.
+
+- **Clarity**: Ensure content is clear, concise, and easy to understand for the intended audience.
+- **Structure**: Use headings (H1, H2, H3, etc.) logically to structure the document effectively.
+- **Formatting**: Use Markdown syntax correctly for lists, code blocks, links, images, tables, emphasis, etc.
+- **Links**: Verify that all internal and external links are working, relevant, and accessible.
+- **Code Blocks**: Specify the language for syntax highlighting in code blocks (e.g., \`\`\`typescript or \`\`\`sh).
+- **Readability**: Break up long paragraphs. Use bolding or italics sparingly and meaningfully for emphasis.
+- **READMEs**: Ensure `README.md` files are comprehensive, covering:
+  - Project overview and goals.
+  - Tech stack.
+  - Setup and installation instructions.
+  - Development process and scripts.
+  - Deployment instructions.
+  - Contribution guidelines.
+  - Ensure the README aligns with the actual project state.

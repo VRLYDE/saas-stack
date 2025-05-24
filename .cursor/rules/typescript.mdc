@@ -1,0 +1,45 @@
+---
+description: 
+globs: **/*.ts
+alwaysApply: false
+---
+## TypeScript Best Practices
+
+These guidelines complement Biome Formatter & ESLint.
+
+- **Type System & Safety**:
+  - Prefer explicit type annotations for variables, function parameters, and return types over implicit `any`.
+  - Avoid `any` where possible. Use `unknown` for values with truly unknown types and perform type-checking before use.
+  - Use `import type` for importing types and interfaces to ensure they are erased at compile time.
+  - Implement type guards for runtime type checking when dealing with unions or complex types.
+  - Define reusable types/interfaces for common data structures. Use `interface` for object shapes and `type` for aliases, unions, intersections. (Prefer `interfaces` over `types` for object definitions as per general project preference).
+- **Naming Conventions**:
+  - Use PascalCase for types, interfaces, enums, and class names.
+  - Use camelCase for variables, function names, and class properties/methods.
+  - Use descriptive variable names, often with auxiliary verbs (e.g., `isLoading`, `hasError`).
+- **Code Style & Structure**:
+  - Write concise, technical TypeScript code.
+  - Use functional and declarative programming patterns; avoid classes unless necessary for specific library integrations or well-established patterns.
+  - Prefer iteration and modularization over code duplication.
+  - Structure files logically: typically, the exported component, then any subcomponents, helpers, static content, and finally types.
+- **File Naming**:
+  - Use lowercase with dashes for directories (e.g., `components/auth-wizard`).
+- **Exports**:
+  - Favor named exports for components and utilities.
+- **Functions & Class Design (if classes are used)**:
+  - **Single Responsibility Principle (SRP)**: Functions and classes should have a single, well-defined responsibility.
+  - **Brevity**: Keep functions and methods concise (aim for 10-20 lines as a guideline; decompose larger ones).
+  - **Parameters**: Limit the number of function parameters (3-4 is a good guideline). Pass an object for more complex inputs.
+  - **Early Exits**: Use guard clauses and return early to reduce nesting and improve readability.
+  - **Side Effects**: Minimize side effects. Functions should ideally rely on inputs to produce outputs. Clearly document any necessary side effects.
+  - **Immutability**: Prefer immutable data structures and patterns where practical.
+  - **Composition over Inheritance**: Favor composition for code reuse and flexibility. Avoid deep inheritance hierarchies.
+- **Syntax**:
+  - Use the `function` keyword for pure functions.
+  - Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- **Error Handling**:
+  - Implement robust error handling using try/catch blocks, error returns, or specific error types.
+- **Readability & Comments**:
+  - Use descriptive names. Add comments only for complex logic that isn't self-evident from the code.
+- **`public` Modifier**: While not strictly necessary for JavaScript output, explicitly using `public` (and `private`/`protected`) improves code clarity and intent in TypeScript classes.
+- **Enums**: Avoid enums; use constant object maps instead. Example: `const STATUS_MAP = { active: 'ACTIVE', inactive: 'INACTIVE' } as const;`

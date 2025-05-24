@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
-language: de-DE
+language: en-US
 tone_instructions: |
   Be a friendly, mentoring senior dev. Help juniors/newcomers understand best practices.
   Explain the "why" & link docs. Give actionable advice/examples.
@@ -150,7 +150,7 @@ reviews:
     - path: "wrangler.jsonc"
       instructions: |
         # Wrangler Configuration (wrangler.jsonc)
-        - Name: Verify the `name` field matches the intended Cloudflare Worker service name ("vrly-de").
+        - Name: Verify the `name` field matches the intended Cloudflare Worker service name.
         - Entry Point: Ensure `main` correctly points to the worker entry script (e.g., `./dist/_worker.js/index.js` for Astro projects).
         - Compatibility:
           - `compatibility_date` should be recent (current: "2025-05-08") and aligned with tested Cloudflare runtime features.
