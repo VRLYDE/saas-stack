@@ -1,14 +1,10 @@
-# 🚀 Full-Stack Cloudflare SaaS Kit
+# 🚀 VRLY - Full-Stack Cloudflare SaaS Platform
 
 **_Build and deploy scalable products on Cloudflare with ease._**
 
 An opinionated, batteries-included starter kit for quickly building and deploying SaaS products on Cloudflare. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`c3`](https://developers.cloudflare.com/pages/get-started/c3).
 
-This is the same stack used to build [Supermemory.ai](https://Supermemory.ai) which is open source at [git.new/memory](https://git.new/memory)
-
-Supermemory now has 20k+ users and it runs on $5/month. safe to say, it's _very_ effective.
-
-## The stack includes:
+## The stack includes
 
 - [Next.js](https://nextjs.org/) for frontend
 - [TailwindCSS](https://tailwindcss.com/) for styling
@@ -25,14 +21,15 @@ Supermemory now has 20k+ users and it runs on $5/month. safe to say, it's _very_
 2. Clone the repository and install dependencies:
 
    ```bash
-   git clone https://github.com/Dhravya/cloudflare-saas-stack
-   cd cloudflare-saas-stack
+   git clone https://github.com/VRLYDE/saas-stack/
+   cd saas-stack
    npm i -g bun
    bun install
    bun run setup
    ```
 
 3. Run the development server:
+
    ```bash
    bun run dev
    ```
@@ -58,7 +55,7 @@ For detailed instructions on setting up bindings, refer to the Cloudflare docume
 
 ## Database Migrations
 
-Quick explaination of D1 set up:
+Quick explanation of D1 set up:
 
 - D1 is a serverless database that follows SQLite convention.
 - Within Cloudflare pages and workers, you can directly query d1 with [client api](https://developers.cloudflare.com/d1/build-with-d1/d1-client-api/) exposed by bindings (eg. `env.BINDING`)
@@ -74,7 +71,7 @@ To generate migrations files:
 To apply database migrations:
 
 - For development: `bun run db:migrate:dev`
-- For production: `bun run db:migrate:prd`
+- For production: `bun run db:migrate:prod`
 
 To inspect database:
 
@@ -123,3 +120,9 @@ If you prefer manual setup:
 - Cost-effective scaling (e.g., $5/month for multiple high-traffic projects)
 
 Just change your Cloudflare account ID in the project settings, and you're good to go!
+
+---
+
+_This README provides a comprehensive overview of the VRLY SaaS Stack._
+
+_Maintained by the 💙 WeMake DevOps Division | [🔗 WeMake.cx](https://wemake.cx)_ | Hannover, Germany

@@ -1,6 +1,6 @@
 {
-  "name": "cloudflare-saas-stack",
-  "version": "0.1.0",
+  "name": "vrly-saas-stack",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
