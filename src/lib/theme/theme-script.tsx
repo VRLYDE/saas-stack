@@ -10,9 +10,8 @@ declare global {
   }
 }
 
-
 const code = function () {
-  const localStorageKey = "__PREFERRED_THEME__"
+  const localStorageKey = "__PREFERRED_THEME__";
   window.__onThemeChange = function () {};
 
   function setTheme(newTheme: Theme) {
@@ -29,7 +28,7 @@ const code = function () {
   try {
     preferredTheme = localStorage.getItem(localStorageKey) as Theme;
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 
   window.__setPreferredTheme = function (newTheme: Theme) {
@@ -37,7 +36,7 @@ const code = function () {
     try {
       localStorage.setItem(localStorageKey, newTheme);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   };
 
