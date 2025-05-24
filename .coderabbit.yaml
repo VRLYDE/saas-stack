@@ -160,7 +160,7 @@ reviews:
         - Environment Variables & Secrets: Review `vars` for non-sensitive configurations. Sensitive data must use secrets and not be hardcoded.
         - Placement: If using `placement: { mode: "smart" }`, ensure it's intentional and understood.
         - Observability: Ensure `observability: { enabled: true }` is set for better monitoring.
-    - path: "**/*.json,**/*.jsonc" # Excludes wrangler.jsonc due to specific rule above if matching order prefers specificity
+    - path: "**/*.json,**/*.jsonc"
       instructions: |
         # JSON and JSONC Formatting (Complements Biome Formatter)
         - Indentation: Use 2 spaces for indentation.
