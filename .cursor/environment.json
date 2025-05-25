@@ -1,0 +1,6 @@
+{
+  "snapshot": "snapshot-20250524-12cecee6-8442-423a-9666-f4738b86b333",
+  "install": "npm install bun -g && bun install",
+  "start": "bun run dev",
+  "terminals": []
+}
