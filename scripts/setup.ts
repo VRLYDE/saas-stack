@@ -28,7 +28,7 @@ function executeCommand(command: string) {
     console.error(
       `\x1b[31mError executing command: ${command}\x1b[0m\n${
         error.stdout || error.stderr || error.message
-      }`,
+      }`
     );
     return { error: true, message: error.stdout || error.stderr };
   }
@@ -61,7 +61,7 @@ function extractAccountDetails(output: string): { name: string; id: string }[] {
         const accountId = matches[0].replace("│ ", "").replace(" │", "");
         if (accountName === undefined || accountId === undefined) {
           console.error(
-            "\x1b[31mError extracting account details from wrangler whoami output.\x1b[0m",
+            "\x1b[31mError extracting account details from wrangler whoami output.\x1b[0m"
           );
           // cancel("Operation cancelled due to parsing error."); // Clack's cancel might not be available here
           process.exit(1);
@@ -76,13 +76,13 @@ function extractAccountDetails(output: string): { name: string; id: string }[] {
 
 // Function to prompt for account ID if there are multiple accounts
 async function promptForAccountId(
-  accounts: { name: string; id: string }[],
+  accounts: { name: string; id: string }[]
 ): Promise<string> {
   if (accounts.length === 1) {
     const account = accounts[0];
     if (!account || !account.id) {
       console.error(
-        "\x1b[31mNo valid account found or account ID is missing. Please run `wrangler login`.\x1b[0m",
+        "\x1b[31mNo valid account found or account ID is missing. Please run `wrangler login`.\x1b[0m"
       );
       cancel("Operation cancelled.");
       process.exit(1); // Ensure exit after cancel
@@ -110,7 +110,7 @@ async function promptForAccountId(
   }
   // This case should ideally be caught earlier, but it's a fallback.
   console.error(
-    "\x1b[31mNo accounts found. Please run `wrangler login`.\x1b[0m",
+    "\x1b[31mNo accounts found. Please run `wrangler login`.\x1b[0m"
   );
   cancel("Operation cancelled.");
   process.exit(1); // Ensure exit after cancel
@@ -136,12 +136,12 @@ async function installDependencies() {
   intro("Installing dependencies for Cloudflare Workers + Next.js...");
   const installSpinner = spinner();
   installSpinner.start(
-    "Adding @opennextjs/cloudflare and ensuring wrangler is up-to-date...",
+    "Adding @opennextjs/cloudflare and ensuring wrangler is up-to-date..."
   );
 
   // Install @opennextjs/cloudflare
   const openNextInstallOutput = executeCommand(
-    "bun add @opennextjs/cloudflare@latest",
+    "bun add @opennextjs/cloudflare@latest"
   );
   if (
     typeof openNextInstallOutput !== "string" ||
@@ -149,7 +149,7 @@ async function installDependencies() {
   ) {
     installSpinner.stop("Failed to install @opennextjs/cloudflare.", 1);
     console.error(
-      "\x1b[31mError installing @opennextjs/cloudflare. Please check the output above and try manually.\x1b[0m",
+      "\x1b[31mError installing @opennextjs/cloudflare. Please check the output above and try manually.\x1b[0m"
     );
     cancel("Operation cancelled due to dependency installation failure.");
     process.exit(1);
@@ -159,12 +159,12 @@ async function installDependencies() {
   // package.json already lists wrangler, so this mostly ensures it's noted.
   // A `bun add -d wrangler@latest` could be used if we want to force update.
   installSpinner.message(
-    "Ensuring wrangler is available (expected in devDependencies)...",
+    "Ensuring wrangler is available (expected in devDependencies)..."
   );
   // No specific command here as `bun install` (run before `setup`) should handle it.
 
   installSpinner.stop(
-    "@opennextjs/cloudflare added. Wrangler should be in devDependencies.",
+    "@opennextjs/cloudflare added. Wrangler should be in devDependencies."
   );
   outro("Dependency check completed.");
 }
@@ -180,10 +180,10 @@ async function configureWorkerSettingsInWranglerToml() {
     wranglerToml = toml.parse(wranglerTomlContent) as toml.JsonMap; // Added type assertion
   } catch (error) {
     console.error(
-      `\x1b[31mError reading wrangler.toml at ${wranglerTomlPath}: ${error}\x1b[0m`,
+      `\x1b[31mError reading wrangler.toml at ${wranglerTomlPath}: ${error}\x1b[0m`
     );
     console.log(
-      "\x1b[33mMake sure a wrangler.toml file exists at the project root.\x1b[0m",
+      "\x1b[33mMake sure a wrangler.toml file exists at the project root.\x1b[0m"
     );
     cancel("Operation cancelled.");
     process.exit(1); // Ensure exit
@@ -193,7 +193,7 @@ async function configureWorkerSettingsInWranglerToml() {
   const defaultAppName = path.basename(process.cwd());
   appName = await prompt(
     "Enter the name for your Cloudflare Workers application",
-    (wranglerToml.name as string) || defaultAppName, // Use existing name if available
+    (wranglerToml.name as string) || defaultAppName // Use existing name if available
   );
 
   // Update wrangler.toml for Next.js on Cloudflare Workers
@@ -217,7 +217,7 @@ async function configureWorkerSettingsInWranglerToml() {
   ) {
     delete wranglerToml.pages_build_output_dir;
     console.log(
-      "\x1b[33mRemoved 'pages_build_output_dir' from wrangler.toml (Pages-specific).\x1b[0m",
+      "\x1b[33mRemoved 'pages_build_output_dir' from wrangler.toml (Pages-specific).\x1b[0m"
     );
   }
 
@@ -238,11 +238,11 @@ async function configureWorkerSettingsInWranglerToml() {
     const updatedToml = toml.stringify(wranglerToml);
     fs.writeFileSync(wranglerTomlPath, updatedToml);
     console.log(
-      `\x1b[33mwrangler.toml updated for Cloudflare Workers (app: ${appName}).\x1b[0m`,
+      `\x1b[33mwrangler.toml updated for Cloudflare Workers (app: ${appName}).\x1b[0m`
     );
   } catch (error) {
     console.error(
-      `\x1b[31mError writing updated wrangler.toml: ${error}\x1b[0m`,
+      `\x1b[31mError writing updated wrangler.toml: ${error}\x1b[0m`
     );
     cancel("Operation cancelled.");
     process.exit(1); // Ensure exit
@@ -268,17 +268,17 @@ export default defineCloudflareConfig({
 
   if (fs.existsSync(openNextConfigPath)) {
     console.log(
-      "\x1b[33mopen-next.config.ts already exists. Skipping creation.\x1b[0m",
+      "\x1b[33mopen-next.config.ts already exists. Skipping creation.\x1b[0m"
     );
   } else {
     try {
       fs.writeFileSync(openNextConfigPath, openNextConfigContent);
       console.log(
-        "\x1b[33mCreated open-next.config.ts for Cloudflare Workers.\x1b[0m",
+        "\x1b[33mCreated open-next.config.ts for Cloudflare Workers.\x1b[0m"
       );
     } catch (err) {
       console.error(
-        `\x1b[31mError creating open-next.config.ts: ${err}\x1b[0m`,
+        `\x1b[31mError creating open-next.config.ts: ${err}\x1b[0m`
       );
       // This might not be critical enough to cancel, but log it.
     }
@@ -302,7 +302,7 @@ async function createDatabaseAndConfigure() {
     wranglerToml = toml.parse(wranglerTomlContent) as toml.JsonMap; // Added type assertion
   } catch (err) {
     console.error(
-      `\x1b[31mError reading wrangler.toml at ${wranglerTomlPath}: ${err}\x1b[0m`,
+      `\x1b[31mError reading wrangler.toml at ${wranglerTomlPath}: ${err}\x1b[0m`
     );
     cancel("Operation cancelled.");
     process.exit(1); // Ensure exit
@@ -310,7 +310,25 @@ async function createDatabaseAndConfigure() {
 
   // Run command to create a new D1 database
   // This command will provision a new D1 database on your Cloudflare account.
-  const creationOutput = executeCommand(`bunx wrangler d1 create ${dbName}`);
+  const createDbProcess = spawnSync(
+    "bunx",
+    ["wrangler", "d1", "create", dbName],
+    {
+      encoding: "utf-8",
+      env: Object.assign({}, process.env, {
+        LC_ALL: "en_US.UTF-8",
+        LANG: "en_US.UTF-8",
+      }),
+    }
+  );
+
+  const creationOutput =
+    createDbProcess.status === 0
+      ? createDbProcess.stdout
+      : {
+          error: true,
+          message: createDbProcess.stderr || createDbProcess.error?.message,
+        };
 
   if (
     creationOutput === undefined ||
@@ -318,7 +336,7 @@ async function createDatabaseAndConfigure() {
     (typeof creationOutput === "object" && "error" in (creationOutput as any))
   ) {
     console.log(
-      "\x1b[33mDatabase creation command failed or indicated an issue. This might occur if a database with the same name already exists. Attempting to retrieve existing database info...\x1b[0m",
+      "\x1b[33mDatabase creation command failed or indicated an issue. This might occur if a database with the same name already exists. Attempting to retrieve existing database info...\x1b[0m"
     );
     // Attempt to get info for an existing database if creation failed.
     const dbInfoOutput = executeCommand(`bunx wrangler d1 info ${dbName}`);
@@ -326,27 +344,27 @@ async function createDatabaseAndConfigure() {
       // Regex to find UUID in the d1 info output
       const getInfo =
         dbInfoOutput.match(
-          /database_id\s*=\s*"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/i,
+          /database_id\s*=\s*"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/i
         ) ||
         dbInfoOutput.match(
           // Fallback for table format
-          /│\s*([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s*│/i,
+          /│\s*([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s*│/i
         );
       if (getInfo && getInfo[1]) {
         databaseID = getInfo[1];
         console.log(
-          `\x1b[33mFound existing database! ID: ${databaseID}\x1b[0m`,
+          `\x1b[33mFound existing database! ID: ${databaseID}\x1b[0m`
         );
       } else {
         console.error(
-          `\x1b[31mFailed to create or find D1 database '${dbName}'. Please check Cloudflare dashboard or wrangler output.\x1b[0m`,
+          `\x1b[31mFailed to create or find D1 database '${dbName}'. Please check Cloudflare dashboard or wrangler output.\x1b[0m`
         );
         if (
           typeof dbInfoOutput === "object" &&
           "message" in (dbInfoOutput as any)
         ) {
           console.error(
-            `\x1b[31mDetails: ${(dbInfoOutput as any).message}\x1b[0m`,
+            `\x1b[31mDetails: ${(dbInfoOutput as any).message}\x1b[0m`
           );
         }
         cancel("Operation cancelled due to D1 database error.");
@@ -354,7 +372,7 @@ async function createDatabaseAndConfigure() {
       }
     } else {
       console.error(
-        `\x1b[31mFailed to get D1 database info for '${dbName}'.\x1b[0m`,
+        `\x1b[31mFailed to get D1 database info for '${dbName}'.\x1b[0m`
       );
       cancel("Operation cancelled due to D1 database error.");
       process.exit(1); // Ensure exit
@@ -365,11 +383,11 @@ async function createDatabaseAndConfigure() {
     if (matchResult && matchResult[1]) {
       databaseID = matchResult[1];
       console.log(
-        `\x1b[32mD1 Database '${dbName}' created successfully. ID: ${databaseID}\x1b[0m`,
+        `\x1b[32mD1 Database '${dbName}' created successfully. ID: ${databaseID}\x1b[0m`
       );
     } else {
       console.error(
-        `\x1b[31mFailed to extract database ID from D1 creation output for '${dbName}'. Output: ${creationOutput}\x1b[0m`,
+        `\x1b[31mFailed to extract database ID from D1 creation output for '${dbName}'. Output: ${creationOutput}\x1b[0m`
       );
       cancel("Operation cancelled.");
       process.exit(1); // Ensure exit
@@ -378,7 +396,7 @@ async function createDatabaseAndConfigure() {
 
   if (!databaseID) {
     console.error(
-      `\x1b[31mCould not determine Database ID for '${dbName}'. Halting setup.\x1b[0m`,
+      `\x1b[31mCould not determine Database ID for '${dbName}'. Halting setup.\x1b[0m`
     );
     cancel("Operation cancelled.");
     process.exit(1);
@@ -391,7 +409,7 @@ async function createDatabaseAndConfigure() {
   wranglerToml.d1_databases = [
     ...safeArrayFilter<any>(
       wranglerToml.d1_databases,
-      (db) => db.binding !== "DATABASE",
+      (db) => db.binding !== "DATABASE"
     ),
     {
       binding: "DATABASE",
@@ -405,11 +423,11 @@ async function createDatabaseAndConfigure() {
     const updatedToml = toml.stringify(wranglerToml);
     fs.writeFileSync(wranglerTomlPath, updatedToml);
     console.log(
-      "\x1b[33mD1 Database configuration updated in wrangler.toml.\x1b[0m",
+      "\x1b[33mD1 Database configuration updated in wrangler.toml.\x1b[0m"
     );
   } catch (err) {
     console.error(
-      `\x1b[31mError writing D1 config to wrangler.toml: ${err}\x1b[0m`,
+      `\x1b[31mError writing D1 config to wrangler.toml: ${err}\x1b[0m`
     );
     cancel("Operation cancelled.");
     process.exit(1); // Ensure exit
@@ -449,13 +467,13 @@ async function createBucketR2() {
   const defaultBucketName = `${appName || path.basename(process.cwd())}-bucket`; // Use appName if set
   bucketR2Name = await prompt(
     "Enter the name for your R2 bucket",
-    defaultBucketName,
+    defaultBucketName
   );
   bucketR2Spinner.start(`Creating R2 bucket '${bucketR2Name}'...`);
 
   // Create R2 bucket. This command provisions a new R2 bucket on Cloudflare.
   const r2CreationOutput = executeCommand(
-    `wrangler r2 bucket create ${bucketR2Name}`,
+    `wrangler r2 bucket create ${bucketR2Name}`
   );
 
   if (
@@ -465,19 +483,19 @@ async function createBucketR2() {
   ) {
     bucketR2Spinner.stop(
       "R2 bucket creation command failed or indicated an issue.",
-      1,
+      1
     );
     console.log(
-      "\x1b[33mThis might occur if an R2 bucket with the same name already exists globally or in your account.\\x1b[0m",
+      "\x1b[33mThis might occur if an R2 bucket with the same name already exists globally or in your account.\\x1b[0m"
     );
     // Unlike D1, R2 names are globally unique, so 'info' might not be useful.
     // We'll proceed to configure it in wrangler.toml assuming it might exist or user will resolve.
     console.log(
-      "\x1b[33mContinuing to update wrangler.toml with this bucket name.\x1b[0m",
+      "\x1b[33mContinuing to update wrangler.toml with this bucket name.\x1b[0m"
     );
   } else {
     bucketR2Spinner.stop(
-      `R2 Bucket '${bucketR2Name}' created (or already exists).`,
+      `R2 Bucket '${bucketR2Name}' created (or already exists).`
     );
   }
 
@@ -487,7 +505,7 @@ async function createBucketR2() {
   wranglerToml.r2_buckets = [
     ...safeArrayFilter<any>(
       wranglerToml.r2_buckets,
-      (bucket) => bucket.binding !== "MY_BUCKET",
+      (bucket) => bucket.binding !== "MY_BUCKET"
     ),
     {
       binding: "MY_BUCKET",
@@ -499,13 +517,13 @@ async function createBucketR2() {
     const updatedToml = toml.stringify(wranglerToml);
     fs.writeFileSync(wranglerTomlPath, updatedToml);
     console.log(
-      "\x1b[33mR2 Bucket configuration updated in wrangler.toml.\x1b[0m",
+      "\x1b[33mR2 Bucket configuration updated in wrangler.toml.\x1b[0m"
     );
   } catch (error) {
     console.error(
       "\x1b[31mError writing R2 config to wrangler.toml:",
       error,
-      "\x1b[0m",
+      "\x1b[0m"
     );
     cancel("Operation cancelled.");
     process.exit(1);
@@ -531,7 +549,7 @@ async function promptForGoogleClientCredentials() {
     devVarsContent.includes("AUTH_GOOGLE_SECRET=")
   ) {
     console.log(
-      "\x1b[33mGoogle OAuth credentials already found in .dev.vars. Skipping prompt.\x1b[0m",
+      "\x1b[33mGoogle OAuth credentials already found in .dev.vars. Skipping prompt.\x1b[0m"
     );
     outro("Authentication setup checked.");
     return;
@@ -552,16 +570,16 @@ async function promptForGoogleClientCredentials() {
       "   - Add Authorized redirect URIs:\n" +
       "     - http://localhost:3000/api/auth/callback/google\n" +
       "     - Your production domain + /api/auth/callback/google (e.g., https://your-app.workers.dev/api/auth/callback/google)\n" +
-      "5. Copy the 'Client ID' and 'Client secret'.\x1b[0m",
+      "5. Copy the 'Client ID' and 'Client secret'.\x1b[0m"
   );
 
   const clientId = await prompt(
     "Enter your Google Client ID (leave empty to skip)",
-    "",
+    ""
   );
   const clientSecret = await prompt(
     "Enter your Google Client Secret (leave empty to skip)",
-    "",
+    ""
   );
 
   let newVars = "";
@@ -576,11 +594,11 @@ async function promptForGoogleClientCredentials() {
     try {
       fs.appendFileSync(devVarsPath, newVars); // Append to preserve other vars
       console.log(
-        "\x1b[33mGoogle OAuth credentials added/updated in .dev.vars.\x1b[0m",
+        "\x1b[33mGoogle OAuth credentials added/updated in .dev.vars.\x1b[0m"
       );
     } catch (error) {
       console.error(
-        `\x1b[31mError updating .dev.vars with Google credentials: ${error}\x1b[0m`,
+        `\x1b[31mError updating .dev.vars with Google credentials: ${error}\x1b[0m`
       );
       // Not critical enough to cancel, but log it.
     }
@@ -611,7 +629,7 @@ async function updateDevVarsWithAuthSecret() {
 
   if (devVarsContent.includes("AUTH_SECRET=")) {
     console.log(
-      "\x1b[33mAUTH_SECRET already exists in .dev.vars. Skipping generation.\x1b[0m",
+      "\x1b[33mAUTH_SECRET already exists in .dev.vars. Skipping generation.\x1b[0m"
     );
   } else {
     // Generate a secure secret for NextAuth.js, crucial for JWT signing, etc.
@@ -623,11 +641,11 @@ async function updateDevVarsWithAuthSecret() {
         `AUTH_SECRET=${secret}\n`;
       fs.appendFileSync(devVarsPath, contentToAppend);
       console.log(
-        "\x1b[33mGenerated and appended AUTH_SECRET to .dev.vars file.\x1b[0m",
+        "\x1b[33mGenerated and appended AUTH_SECRET to .dev.vars file.\x1b[0m"
       );
     } catch (error) {
       console.error(
-        `\x1b[31mError updating .dev.vars with AUTH_SECRET: ${error}\x1b[0m`,
+        `\x1b[31mError updating .dev.vars with AUTH_SECRET: ${error}\x1b[0m`
       );
       // Not critical enough to cancel.
     }
@@ -646,7 +664,7 @@ async function runDatabaseMigrations(currentDbName: string) {
   const migrationSpinner = spinner();
 
   migrationSpinner.start(
-    "Generating database schema migration files (if any changes)...",
+    "Generating database schema migration files (if any changes)..."
   );
   // This command introspects your Drizzle schema and generates SQL migration files.
   const generateOutput = executeCommand("bunx drizzle-kit generate");
@@ -654,59 +672,59 @@ async function runDatabaseMigrations(currentDbName: string) {
     migrationSpinner.stop("Schema generation step failed or had issues.", 1);
     console.error(
       "\x1b[31mError during `drizzle-kit generate`:\\x1b[0m",
-      generateOutput.message,
+      generateOutput.message
     );
     // Decide if this is critical enough to stop. For now, just warn.
   } else {
     migrationSpinner.message(
-      "Schema generation completed (or no changes detected).",
+      "Schema generation completed (or no changes detected)."
     );
   }
 
   // Apply migrations to the local D1 database (used for `wrangler dev`)
   // This command executes the generated SQL migrations against your local D1 instance.
   migrationSpinner.start(
-    `Applying migrations to local D1 database '${currentDbName}'...`,
+    `Applying migrations to local D1 database '${currentDbName}'...`
   );
   const localMigrateOutput = executeCommand(
-    `bunx wrangler d1 migrations apply "${currentDbName}" --local`,
+    `bunx wrangler d1 migrations apply "${currentDbName}" --local`
   );
   if (typeof localMigrateOutput === "object" && localMigrateOutput.error) {
     migrationSpinner.stop("Local D1 migration failed.", 1);
     console.error(
       "\x1b[31mError applying local D1 migrations:\\x1b[0m",
-      localMigrateOutput.message,
+      localMigrateOutput.message
     );
     // It's important that local migrations succeed for development.
     cancel("Operation cancelled due to local migration failure.");
     process.exit(1);
   } else {
     migrationSpinner.message(
-      `Local D1 migrations for '${currentDbName}' completed.`,
+      `Local D1 migrations for '${currentDbName}' completed.`
     );
   }
 
   // Apply migrations to the remote D1 database (production)
   // This command executes migrations against your provisioned D1 database on Cloudflare.
   migrationSpinner.start(
-    `Applying migrations to remote D1 database '${currentDbName}'...`,
+    `Applying migrations to remote D1 database '${currentDbName}'...`
   );
   const remoteMigrateOutput = executeCommand(
-    `bunx wrangler d1 migrations apply "${currentDbName}" --remote`,
+    `bunx wrangler d1 migrations apply "${currentDbName}" --remote`
   );
   if (typeof remoteMigrateOutput === "object" && remoteMigrateOutput.error) {
     migrationSpinner.stop("Remote D1 migration failed.", 1);
     console.error(
       "\x1b[31mError applying remote D1 migrations:\\x1b[0m",
-      remoteMigrateOutput.message,
+      remoteMigrateOutput.message
     );
     console.warn(
-      "\x1b[33mPlease check the error and apply remote migrations manually if needed.\\x1b[0m",
+      "\x1b[33mPlease check the error and apply remote migrations manually if needed.\\x1b[0m"
     );
     // Depending on policy, this could be a cancel(), but for now, warn.
   } else {
     migrationSpinner.stop(
-      `Remote D1 migrations for '${currentDbName}' completed.`,
+      `Remote D1 migrations for '${currentDbName}' completed.`
     );
   }
 
@@ -730,11 +748,11 @@ function suggestEnvVariableSetup(name: string, value: string) {
   }
 
   console.error(
-    `\x1b[31mMissing Cloudflare Account ID. Please set the ${name} environment variable.\x1b[0m`,
+    `\x1b[31mMissing Cloudflare Account ID. Please set the ${name} environment variable.\x1b[0m`
   );
   console.log(`\x1b[33mRun this command in your terminal: ${exportCmd}\x1b[0m`);
   console.log(
-    "\x1b[33mThen, re-run this setup script: \x1b[1mbun run setup\x1b[0m",
+    "\x1b[33mThen, re-run this setup script: \x1b[1mbun run setup\x1b[0m"
   );
 }
 
@@ -754,14 +772,14 @@ async function main() {
     ) {
       whoamiSpinner.stop("Failed to get Cloudflare account info.", 1);
       console.error(
-        "\x1b[31mError running `wrangler whoami`. Ensure you are logged in (`wrangler login`).\x1b[0m",
+        "\x1b[31mError running `wrangler whoami`. Ensure you are logged in (`wrangler login`).\x1b[0m"
       );
       if (
         typeof whoamiOutput === "object" &&
         "message" in (whoamiOutput as any)
       ) {
         console.error(
-          `\x1b[31mDetails: ${(whoamiOutput as any).message}\x1b[0m`,
+          `\x1b[31mDetails: ${(whoamiOutput as any).message}\x1b[0m`
         );
       }
       cancel("Operation cancelled.");
@@ -776,26 +794,26 @@ async function main() {
       // This case might mean `wrangler whoami` output format changed or no accounts truly found
       whoamiSpinner.stop(
         "Could not identify Cloudflare Account ID automatically.",
-        1,
+        1
       );
       console.error(
-        "\x1b[31mCould not automatically determine your Cloudflare Account ID from `wrangler whoami`.\\x1b[0m",
+        "\x1b[31mCould not automatically determine your Cloudflare Account ID from `wrangler whoami`.\\x1b[0m"
       );
       console.log(
-        "\x1b[33mPlease find your Account ID on the Cloudflare dashboard (sidebar, bottom right) and set it as CLOUDFLARE_ACCOUNT_ID environment variable.\\x1b[0m",
+        "\x1b[33mPlease find your Account ID on the Cloudflare dashboard (sidebar, bottom right) and set it as CLOUDFLARE_ACCOUNT_ID environment variable.\\x1b[0m"
       );
       suggestEnvVariableSetup("CLOUDFLARE_ACCOUNT_ID", "your_account_id_here");
       cancel("Operation cancelled. CLOUDFLARE_ACCOUNT_ID must be set.");
       process.exit(1);
     } else if (accountDetails.length > 0) {
       whoamiSpinner.message(
-        "Multiple Cloudflare accounts found or single account identified.",
+        "Multiple Cloudflare accounts found or single account identified."
       );
       const accountId = await promptForAccountId(accountDetails);
       if (accountId) {
         whoamiSpinner.stop(`Using Account ID: ${accountId}`);
         console.log(
-          "\x1b[33mCloudflare Account ID selected. For future runs, you can set this as an environment variable: CLOUDFLARE_ACCOUNT_ID\x1b[0m",
+          "\x1b[33mCloudflare Account ID selected. For future runs, you can set this as an environment variable: CLOUDFLARE_ACCOUNT_ID\x1b[0m"
         );
         // Set it for the current process to allow D1 creation etc. to succeed.
         process.env.CLOUDFLARE_ACCOUNT_ID = accountId;
@@ -813,7 +831,7 @@ async function main() {
     }
   } else {
     console.log(
-      `\x1b[33mUsing CLOUDFLARE_ACCOUNT_ID from environment: ${process.env.CLOUDFLARE_ACCOUNT_ID}\x1b[0m`,
+      `\x1b[33mUsing CLOUDFLARE_ACCOUNT_ID from environment: ${process.env.CLOUDFLARE_ACCOUNT_ID}\x1b[0m`
     );
   }
 
@@ -843,7 +861,7 @@ async function main() {
       await runDatabaseMigrations(dbName);
     } else {
       console.warn(
-        "\x1b[33mSkipping database migrations as dbName was not set.\x1b[0m",
+        "\x1b[33mSkipping database migrations as dbName was not set.\x1b[0m"
       );
     }
 
@@ -851,7 +869,7 @@ async function main() {
     outro("✅ Setup for Cloudflare Workers completed successfully!");
     console.log("\n\x1b[1mImportant Next Steps:");
     console.log(
-      "\x1b[36m1. Update your `package.json` scripts for building and deploying with OpenNext:\x1b[0m",
+      "\x1b[36m1. Update your `package.json` scripts for building and deploying with OpenNext:\x1b[0m"
     );
     console.log(`
   \x1b[32m// Example package.json scripts:
@@ -867,25 +885,25 @@ async function main() {
   }\x1b[0m
 `);
     console.log(
-      "\x1b[33m   - Remove or replace old Pages-specific scripts (e.g., \`pages:build\`).\x1b[0m",
+      "\x1b[33m   - Remove or replace old Pages-specific scripts (e.g., \`pages:build\`).\x1b[0m"
     );
     console.log(
-      "\x1b[36m2. (Optional) Remove \`@cloudflare/next-on-pages\` dependency if it's listed in your \`package.json\`:\\x1b[0m",
+      "\x1b[36m2. (Optional) Remove \`@cloudflare/next-on-pages\` dependency if it's listed in your \`package.json\`:\\x1b[0m"
     );
     console.log("   \x1b[32mbun remove @cloudflare/next-on-pages\x1b[0m");
     console.log(
-      "\x1b[36m3. Review \`wrangler.toml\` and \`.dev.vars\` for correctness.\x1b[0m",
+      "\x1b[36m3. Review \`wrangler.toml\` and \`.dev.vars\` for correctness.\x1b[0m"
     );
     console.log(
-      "\x1b[36m4. To start your local development server (uses Next.js dev server):\x1b[0m",
+      "\x1b[36m4. To start your local development server (uses Next.js dev server):\x1b[0m"
     );
     console.log("   \x1b[32mbun run dev\x1b[0m");
     console.log(
-      "\x1b[36m5. To preview your application locally as it would run on Cloudflare Workers:\x1b[0m",
+      "\x1b[36m5. To preview your application locally as it would run on Cloudflare Workers:\x1b[0m"
     );
     console.log("   \x1b[32mbun run preview\x1b[0m");
     console.log(
-      "\x1b[36m6. To deploy your application to Cloudflare Workers:\x1b[0m",
+      "\x1b[36m6. To deploy your application to Cloudflare Workers:\x1b[0m"
     );
     console.log("   \x1b[32mbun run deploy\x1b[0m");
 
@@ -893,7 +911,7 @@ async function main() {
     // spawnSync("bun", ["run", "dev"], { stdio: "inherit" });
   } catch (error: any) {
     console.error(
-      `\n\x1b[31m❌ An error occurred during setup: ${error instanceof Error ? error.message : String(error)}\x1b[0m`,
+      `\n\x1b[31m❌ An error occurred during setup: ${error instanceof Error ? error.message : String(error)}\x1b[0m`
     );
     if (error instanceof Error && error.stack) {
       console.error(error.stack);
@@ -905,7 +923,7 @@ async function main() {
 
 main().catch((e) => {
   console.error(
-    `\x1b[31mUnhandled error in main: ${e instanceof Error ? e.message : String(e)}\x1b[0m`,
+    `\x1b[31mUnhandled error in main: ${e instanceof Error ? e.message : String(e)}\x1b[0m`
   );
   if (e instanceof Error && e.stack) {
     console.error(e.stack);
