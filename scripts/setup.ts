@@ -686,14 +686,26 @@ async function runDatabaseMigrations(currentDbName: string) {
   migrationSpinner.start(
     `Applying migrations to local D1 database '${currentDbName}'...`
   );
-  const localMigrateOutput = executeCommand(
-    `bunx wrangler d1 migrations apply "${currentDbName}" --local`
+
+  // Use spawnSync instead of executeCommand to avoid command injection risks
+  const localMigrateProcess = spawnSync(
+    "bunx",
+    ["wrangler", "d1", "migrations", "apply", currentDbName, "--local"],
+    {
+      encoding: "utf-8",
+      env: Object.assign({}, process.env, {
+        LC_ALL: "en_US.UTF-8",
+        LANG: "en_US.UTF-8",
+      }),
+    }
   );
-  if (typeof localMigrateOutput === "object" && localMigrateOutput.error) {
+
+  // Check for errors in the spawn result
+  if (localMigrateProcess.status !== 0) {
     migrationSpinner.stop("Local D1 migration failed.", 1);
     console.error(
       "\x1b[31mError applying local D1 migrations:\\x1b[0m",
-      localMigrateOutput.message
+      localMigrateProcess.stderr || localMigrateProcess.error?.message
     );
     // It's important that local migrations succeed for development.
     cancel("Operation cancelled due to local migration failure.");
@@ -709,14 +721,26 @@ async function runDatabaseMigrations(currentDbName: string) {
   migrationSpinner.start(
     `Applying migrations to remote D1 database '${currentDbName}'...`
   );
-  const remoteMigrateOutput = executeCommand(
-    `bunx wrangler d1 migrations apply "${currentDbName}" --remote`
+
+  // Use spawnSync instead of executeCommand to avoid command injection risks
+  const remoteMigrateProcess = spawnSync(
+    "bunx",
+    ["wrangler", "d1", "migrations", "apply", currentDbName, "--remote"],
+    {
+      encoding: "utf-8",
+      env: Object.assign({}, process.env, {
+        LC_ALL: "en_US.UTF-8",
+        LANG: "en_US.UTF-8",
+      }),
+    }
   );
-  if (typeof remoteMigrateOutput === "object" && remoteMigrateOutput.error) {
+
+  // Check for errors in the spawn result
+  if (remoteMigrateProcess.status !== 0) {
     migrationSpinner.stop("Remote D1 migration failed.", 1);
     console.error(
       "\x1b[31mError applying remote D1 migrations:\\x1b[0m",
-      remoteMigrateOutput.message
+      remoteMigrateProcess.stderr || remoteMigrateProcess.error?.message
     );
     cancel("Operation cancelled due to remote migration failure.");
     process.exit(1);
