@@ -139,17 +139,29 @@ async function installDependencies() {
     "Adding @opennextjs/cloudflare and ensuring wrangler is up-to-date..."
   );
 
-  // Install @opennextjs/cloudflare
-  const openNextInstallOutput = executeCommand(
-    "bun add @opennextjs/cloudflare@latest"
+  // Install @opennextjs/cloudflare using spawnSync for safety against command injection
+  const openNextInstallProcess = spawnSync(
+    "bun",
+    ["add", "@opennextjs/cloudflare@latest"],
+    {
+      encoding: "utf-8",
+      env: Object.assign({}, process.env, {
+        LC_ALL: "en_US.UTF-8",
+        LANG: "en_US.UTF-8",
+      }),
+    }
   );
+
   if (
-    typeof openNextInstallOutput !== "string" ||
-    openNextInstallOutput.includes("error:")
+    openNextInstallProcess.status !== 0 ||
+    openNextInstallProcess.stderr?.includes("error:")
   ) {
     installSpinner.stop("Failed to install @opennextjs/cloudflare.", 1);
     console.error(
       "\x1b[31mError installing @opennextjs/cloudflare. Please check the output above and try manually.\x1b[0m"
+    );
+    console.error(
+      openNextInstallProcess.stderr || openNextInstallProcess.error?.message
     );
     cancel("Operation cancelled due to dependency installation failure.");
     process.exit(1);
