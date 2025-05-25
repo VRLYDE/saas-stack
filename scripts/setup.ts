@@ -484,9 +484,25 @@ async function createBucketR2() {
   bucketR2Spinner.start(`Creating R2 bucket '${bucketR2Name}'...`);
 
   // Create R2 bucket. This command provisions a new R2 bucket on Cloudflare.
-  const r2CreationOutput = executeCommand(
-    `wrangler r2 bucket create ${bucketR2Name}`
+  const r2CreationProcess = spawnSync(
+    "wrangler",
+    ["r2", "bucket", "create", bucketR2Name],
+    {
+      encoding: "utf-8",
+      env: Object.assign({}, process.env, {
+        LC_ALL: "en_US.UTF-8",
+        LANG: "en_US.UTF-8",
+      }),
+    }
   );
+
+  const r2CreationOutput =
+    r2CreationProcess.status === 0
+      ? r2CreationProcess.stdout
+      : {
+          error: true,
+          message: r2CreationProcess.stderr || r2CreationProcess.error?.message,
+        };
 
   if (
     typeof r2CreationOutput !== "string" ||
