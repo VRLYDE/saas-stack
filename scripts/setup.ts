@@ -718,10 +718,8 @@ async function runDatabaseMigrations(currentDbName: string) {
       "\x1b[31mError applying remote D1 migrations:\\x1b[0m",
       remoteMigrateOutput.message
     );
-    console.warn(
-      "\x1b[33mPlease check the error and apply remote migrations manually if needed.\\x1b[0m"
-    );
-    // Depending on policy, this could be a cancel(), but for now, warn.
+    cancel("Operation cancelled due to remote migration failure.");
+    process.exit(1);
   } else {
     migrationSpinner.stop(
       `Remote D1 migrations for '${currentDbName}' completed.`
